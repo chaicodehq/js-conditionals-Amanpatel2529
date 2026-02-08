@@ -23,4 +23,30 @@
  */
 export function getTrafficAction(color) {
   // Your code here
+  //color != string ->ye true h to return invalid 
+  if (typeof color !== "string") {
+    return "INVALID SIGNAL";
+  }
+
+ // color ko case insensitive me convert kro toLowerCase()
+  const caseInSensitive = color.toLowerCase();
+
+  //compare krenge case insensitive color ko 
+  switch (caseInSensitive) {
+    //green h to go
+    case "green":
+      return "GO";
+    //yellow to slow krdo
+    case "yellow":
+      return "SLOW DOWN";
+    //red h to stop krdo
+    case "red":
+      return "STOP";
+    //red flash kr raha h to stop aur go 
+    case "flashing red":
+      return "STOP AND PROCEED WITH CAUTION";
+    //color green, red, yellow nhi h to invalid color h
+    default:
+      return "INVALID SIGNAL";
+  }
 }

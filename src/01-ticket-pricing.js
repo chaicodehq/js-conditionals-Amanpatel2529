@@ -24,4 +24,32 @@
  */
 export function getTicketPrice(age, isWeekend) {
   // Your code here
+  // age != -ve or age=!number
+  if (typeof age !== "number" || isNaN(age) || age < 0) {
+    return -1;
+  }
+
+  let price = 0;
+
+  if (age <= 12) {
+    // 0-12 -> $8
+    price = 8;
+  } else if (age <= 17) {
+    // 13-17 -> $12
+    price = 12;
+  } else if (age <= 59) {
+    // 18-59 -> $15
+    price = 15;
+  } else {
+    // 60+ -> $10
+    price = 10;
+  }
+
+  if (isWeekend) {
+    //isWeekend -> true -> price + $3
+    price += 3;
+  }
+
+  //price return krdo
+  return price;
 }
