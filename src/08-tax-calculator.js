@@ -27,4 +27,33 @@
  */
 export function calculateTax(income) {
   // Your code here
+  //income 0 ya -ve h to 0 return krdo
+  if (income <= 0) {
+    return 0;
+  }
+
+  let totalTax = 0;
+
+  // Bracket 1: $0 - $10,000 (0%)
+  //tax free 
+
+  // Bracket 2: $10,001 - $30,000 (10%)
+  if (income > 10000) {
+    const taxBracket = Math.min(income, 30000) - 10000;
+    totalTax += taxBracket * 0.1;
+  }
+
+  // Bracket 3: $30,001 - $70,000 (20%)
+  if (income > 30000) {
+    const taxBracket = Math.min(income, 70000) - 30000;
+    totalTax += taxBracket * 0.2;
+  }
+
+  // Bracket 4: Over $70,000 (30%)
+  if (income > 70000) {
+    const taxBracket = income - 70000;
+    totalTax += taxBracket * 0.3;
+  }
+
+  return totalTax;
 }

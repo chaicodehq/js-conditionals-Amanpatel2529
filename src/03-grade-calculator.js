@@ -26,4 +26,26 @@
  */
 export function calculateGrade(score, hasExtraCredit) {
   // Your code here
+  //score 0-100 ke beech me h to invalid
+  if (score < 0 || score > 100) {
+    return "INVALID";
+  }
+
+  //extra credit h to score me 5 add krdo
+  if (hasExtraCredit) {
+    score = Math.min(score + 5, 100);
+  }
+
+  //grade calculate krdo
+  if (score >= 90) {
+    return "A";
+  } else if (score >= 80) {
+    return "B";
+  } else if (score >= 70) {
+    return "C";
+  } else if (score >= 60) {
+    return "D";
+  } else {
+    return "F";
+  }
 }

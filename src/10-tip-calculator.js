@@ -31,4 +31,33 @@
  */
 export function calculateTip(billAmount, serviceRating) {
   // Your code here
+  //billAmount 0 ya -ve h to null return krdo
+  if (
+    billAmount <= 0 ||
+    !Number.isInteger(serviceRating) ||
+    serviceRating < 1 ||
+    serviceRating > 5
+  ) {
+    return null;
+  }
+
+  let tipPercentage;
+
+  //serviceRating ke hisab se tip per cal kro 
+  if (serviceRating === 1) tipPercentage = 5;
+  else if (serviceRating === 2) tipPercentage = 10;
+  else if (serviceRating === 3) tipPercentage = 15;
+  else if (serviceRating === 4) tipPercentage = 20;
+  else tipPercentage = 25;
+
+  //tip aur total amount cal krdo
+  let tipAmount = billAmount * (tipPercentage / 100);
+  let totalAmount = billAmount + tipAmount;
+
+  //Return -> Object (Converting toFixed strings back to Numbers)
+  return {
+    tipPercentage: tipPercentage,
+    tipAmount: Number(tipAmount.toFixed(2)),
+    totalAmount: Number(totalAmount.toFixed(2)),
+  };
 }

@@ -32,4 +32,34 @@
  */
 export function calculateCoffeePrice(size, type, extras = {}) {
   // Your code here
+  //size valid h ki nhi check kro
+  if(size !== "small" && size !=="medium" && size !=="large"){
+    return -1;
+  }
+
+  //type valid h ki nhi check kro
+  if(type !=="regular" && type !=="latte" && type !=="cappuccino" && type !=="mocha"){
+    return -1;
+  }
+
+  //variable total 0 se initialize kro
+  let total = 0;
+
+  //size ke hisab se total add krdo
+  if (size === "small") total = 3.00;
+  else if (size === "medium") total = 4.00;
+  else if (size === "large") total = 5.00;
+
+  // type ke hisab se total add krdo
+  if (type === "latte") total += 1.00;
+  else if (type === "cappuccino") total += 1.50;
+  else if (type === "mocha") total += 2.00;
+
+  // extra ke hisab se total add krdo
+  if (extras.whippedCream) total += 0.50;
+  if (extras.extraShot) total += 0.75;
+
+  // 5. Round to 2 decimal places
+  return Math.round(total * 100) / 100;
+  
 }
